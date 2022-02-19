@@ -34,6 +34,52 @@ fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
         .catch(err => console.error(err))
 
 
+        fetch("https://api.coingecko.com/api/v3/coins/ethereum")
+        .then(res => {
+            if (!res.ok) {
+                throw Error("Qualcosa è andato storto")
+            }
+            
+            return res.json()
+        })
+    
+        .then(data => {
+            document.getElementById("eth-crypto").innerHTML = `
+            <img src=${data.image.small} />
+            <span>${data.name} </span> `
+            document.getElementById("eth-crypto").innerHTML += `
+            <p>🎯: €${data.market_data.current_price.eur}</p>
+            <p>👆: €${data.market_data.high_24h.eur}</p>
+            <p>👇: €${data.market_data.low_24h.eur}</p>  `
+
+            })
+    
+            .catch(err => console.error(err))
+
+
+            fetch("https://api.coingecko.com/api/v3/coins/solana")
+            .then(res => {
+                if (!res.ok) {
+                    throw Error("Qualcosa è andato storto")
+                }
+                
+                return res.json()
+            })
+        
+            .then(data => {
+                document.getElementById("sol-crypto").innerHTML = `
+                <img src=${data.image.small} />
+                <span>${data.name} </span> `
+                document.getElementById("sol-crypto").innerHTML += `
+                <p>🎯: €${data.market_data.current_price.eur}</p>
+                <p>👆: €${data.market_data.high_24h.eur}</p>
+                <p>👇: €${data.market_data.low_24h.eur}</p>  `
+    
+                })
+        
+                .catch(err => console.error(err))
+
+
 function getCurrentTime () {
     const date = new Date()
     document.getElementById("time").textContent = date.toLocaleTimeString("it", {timeStyle: "medium"})
@@ -61,3 +107,22 @@ navigator.geolocation.getCurrentPosition(position => {
     .catch(err => console.error(err))
     })
 
+
+    const quoteEl = document.getElementById("quote")
+    const getQuote = async () => {
+        try {
+            const res = await fetch("https://api.quotable.io/random")
+            if ( !res.ok ) {
+                throw Error("<span>Qualcosa è andato storto.</span><br />Per favore, prova ad aggiornare la pagina.")
+            }
+            const data = await res.json()
+    
+            quoteEl.innerHTML += `<q>${data.content}</q><small> - ${data.author}</small>`
+        } catch(err) {
+            quoteEl.innerHTML = `<p class="error">${err}</p>`
+        }
+    }
+    getQuote()
+
+
+   

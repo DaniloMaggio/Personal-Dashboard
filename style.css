@@ -15,8 +15,8 @@ body {
     -o-background-size: cover;
     background-size: cover;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    text-shadow: 1px 1px 2px #474747;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 2px black;
 } 
 
 main {
@@ -32,27 +32,87 @@ main {
     justify-content: space-between;
 }
 
-.time {
+/*.time {
     text-align: center;
     font-size: 7rem;
     margin-top: -20px;
+}*/
+
+.time {
+    text-align: center;
+    position: relative;
+    font-size: 7rem;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.time::before,
+.time::after {
+    display: block;
+    font-size: 0.175em;
+    color: white;
+    font-weight: 400;
+    font-style: italic;
+    padding: 4px;
+}
+
+.time::before {
+    content: "Bentornato, sono le ore";
+    bottom: 100%;
+    left: 0;
+}
+
+.time::after {
+    content: "passa una buona giornata!";
+    top: 100%;
+    right: 0.5ch;
 }
 
 #crypto-top {
     display: flex;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 9px;
-
+    letter-spacing: 1px;
 }
 
 #crypto > p {
-    margin: 0;
-    font-size: 1.3rem;
+    margin: 0.5px;
+    font-size: 1.4rem;
 }
 
 span {
     margin-left: 8px;
+}
+
+#eth-crypto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    margin-top: 200px;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+#eth-crypto > p {
+    margin: 0.5px;
+    font-size: 1.4rem;
+}
+
+#sol-crypto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    margin-top: 440px;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+#sol-crypto > p {
+    margin: 0.5px;
+    font-size: 1.4rem;
 }
 
 #weather {
@@ -65,7 +125,8 @@ span {
 }
 
 #weather > img {
-    width: 90px;
+    width: 75px;
+    margin-right: 6px;
 }
 
 .weather-city {
@@ -83,5 +144,20 @@ span {
 }
 
 #author {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    margin-left: auto;
 }
+
+#quote {
+    justify-self: center;  
+    align-self: center;    
+    font-size: 1.0rem;
+    letter-spacing: 0.8px;
+    margin-bottom: -1px;    
+}
+
+#quote small {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+}
+
